@@ -1,0 +1,14 @@
+Label
+HBoxContainer
+VBoxContainer
+TextEdit
+RichTextLabel
+TextureRect
+Sprite2D
+Timer
+Panel
+MarginContainer
+PanelContainer
+Node
+GPUParticles2D
+Node2D

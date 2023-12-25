@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3hxp1koxn6q4"]
+
+[ext_resource type="Texture2D" uid="uid://brasuh4wi1fc7" path="res://Images/shield3.png" id="1_4lxr2"]
+[ext_resource type="Script" path="res://Scripts/shield_indicator.gd" id="2_o3lll"]
+
+[node name="ShieldIndicator" type="TextureRect"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 144.0
+offset_bottom = 137.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_4lxr2")
+script = ExtResource("2_o3lll")

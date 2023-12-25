@@ -1,0 +1,456 @@
+[gd_scene load_steps=21 format=3 uid="uid://crins0pg1w433"]
+
+[ext_resource type="Texture2D" uid="uid://bwfaskclx4ipd" path="res://Images/black.png" id="1_nmp6a"]
+[ext_resource type="Script" path="res://Scenes/SettingsMenu.gd" id="3_c841p"]
+[ext_resource type="Script" path="res://Scripts/MainMenuButtons.gd" id="3_ic6mt"]
+[ext_resource type="Theme" uid="uid://cwq20kss7gfox" path="res://Theme/Asteroids_Theme.tres" id="3_pigof"]
+[ext_resource type="Texture2D" uid="uid://b7va2t12gcs71" path="res://UI/Controls/tile_0119.png" id="5_4w7mh"]
+[ext_resource type="Script" path="res://Scripts/MenuMusicManager.gd" id="5_dbeaf"]
+[ext_resource type="Script" path="res://Scripts/ControlsMenu.gd" id="5_qxkbx"]
+[ext_resource type="Texture2D" uid="uid://blcer4kd5286f" path="res://UI/Controls/tile_0086.png" id="6_i7ib0"]
+[ext_resource type="Texture2D" uid="uid://blr8k5htegar" path="res://UI/Controls/tile_0247.png" id="7_scvno"]
+[ext_resource type="Texture2D" uid="uid://ygkpsbrkjbdj" path="res://UI/Controls/tile_0169.png" id="8_y7yrm"]
+[ext_resource type="Texture2D" uid="uid://cgitl8mrdxdn3" path="res://UI/Controls/tile_0120.png" id="9_a1dfv"]
+[ext_resource type="Texture2D" uid="uid://c12ovqubg8y4q" path="res://UI/Controls/tile_0250.png" id="10_6fkxp"]
+[ext_resource type="Texture2D" uid="uid://dpcexbwnn21ve" path="res://UI/Controls/tile_0167.png" id="11_5qq3h"]
+[ext_resource type="Texture2D" uid="uid://v66svkmdqkql" path="res://UI/Controls/tile_0122.png" id="12_xk0pb"]
+[ext_resource type="Texture2D" uid="uid://bnp4dpf4r4xck" path="res://UI/Controls/tile_0248.png" id="13_d1bsy"]
+[ext_resource type="Texture2D" uid="uid://ba01eohk5cwom" path="res://UI/Controls/tile_0153.png" id="14_573ba"]
+[ext_resource type="Texture2D" uid="uid://co2pmb7ygroa0" path="res://UI/Controls/tile_0311.png" id="15_ksfje"]
+[ext_resource type="Texture2D" uid="uid://d0js2rxtfddf3" path="res://UI/Controls/tile_0017.png" id="16_efhja"]
+[ext_resource type="Texture2D" uid="uid://iqyfhmeo2iax" path="res://UI/Controls/tile_0802.png" id="17_2b0f6"]
+[ext_resource type="Script" path="res://Scripts/CreditsMenu.gd" id="19_306vd"]
+
+[node name="MainMenu" type="TextureRect"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00293, 1)
+texture = ExtResource("1_nmp6a")
+stretch_mode = 1
+
+[node name="MainMenuButtons" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_ic6mt")
+
+[node name="PanelContainer" type="PanelContainer" parent="MainMenuButtons"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuButtons/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuButtons/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenuButtons/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "OPEN_ASTEROIDS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainMenuButtons/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="MainMenuButtons/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PLAY GAME"
+
+[node name="SettingsButton" type="Button" parent="MainMenuButtons/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="ControlsButton" type="Button" parent="MainMenuButtons/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "CONTROLS"
+
+[node name="CreditsButton" type="Button" parent="MainMenuButtons/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "CREDITS"
+
+[node name="QuitButton" type="Button" parent="MainMenuButtons/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "QUIT"
+
+[node name="SettingsMenu" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_c841p")
+
+[node name="PanelContainer" type="PanelContainer" parent="SettingsMenu"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsMenu/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsMenu/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MusicVolumeLabel" type="Label" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Music Volume:"
+horizontal_alignment = 1
+
+[node name="MusicVolumeSlider" type="HSlider" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_pigof")
+min_value = -70.0
+max_value = 30.0
+value = -20.0
+rounded = true
+
+[node name="HSeparator2" type="HSeparator" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFXVolumeLabel" type="Label" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "SFX Volume:"
+horizontal_alignment = 1
+
+[node name="SFXVolumeSlider" type="HSlider" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_pigof")
+min_value = -60.0
+max_value = 40.0
+value = -10.0
+
+[node name="HSeparator3" type="HSeparator" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="UIVolumeLabel" type="Label" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "UI Volume:"
+horizontal_alignment = 1
+
+[node name="UIVolumeSlider" type="HSlider" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_pigof")
+min_value = -60.0
+max_value = 40.0
+value = -10.0
+
+[node name="HSeparator4" type="HSeparator" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MenuButton" type="Button" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="ControlMenu" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_qxkbx")
+
+[node name="PanelContainer" type="PanelContainer" parent="ControlMenu"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ControlMenu/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlMenu/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "CONTROLS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_4w7mh")
+
+[node name="TextureRect2" type="TextureRect" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_i7ib0")
+
+[node name="TextureRect3" type="TextureRect" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_scvno")
+
+[node name="Label" type="Label" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 11
+text = "FORWARD"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("8_y7yrm")
+
+[node name="TextureRect2" type="TextureRect" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("9_a1dfv")
+
+[node name="TextureRect3" type="TextureRect" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("10_6fkxp")
+
+[node name="Label" type="Label" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 11
+text = "ROTATE LEFT"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("11_5qq3h")
+
+[node name="TextureRect2" type="TextureRect" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("12_xk0pb")
+
+[node name="TextureRect3" type="TextureRect" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("13_d1bsy")
+
+[node name="Label" type="Label" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 11
+text = "ROTATE RIGHT"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+texture = ExtResource("14_573ba")
+
+[node name="TextureRect2" type="TextureRect" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+texture = ExtResource("15_ksfje")
+
+[node name="Label" type="Label" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 11
+text = "SHOOT"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+texture = ExtResource("16_efhja")
+
+[node name="TextureRect2" type="TextureRect" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+texture = ExtResource("17_2b0f6")
+
+[node name="Label" type="Label" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 11
+text = "MENU / PAUSE"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MenuButton" type="Button" parent="ControlMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="CreditsMenu" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 832.0
+offset_top = 412.0
+offset_right = 1088.0
+offset_bottom = 668.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("19_306vd")
+
+[node name="PanelContainer" type="PanelContainer" parent="CreditsMenu"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsMenu/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsMenu/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CreditsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "CREDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CreditsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CreditsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "ART ASSETS:
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CreditsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Kenny: https://www.kenney.nl/
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="CreditsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="CreditsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "AUDIO ASSETS: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label11" type="Label" parent="CreditsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "From Kenny: https://www.kenney.nl/ :
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="CreditsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "SFX: Kenny: https://www.kenney.nl/
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label12" type="Label" parent="CreditsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "From https://opengameart.org :
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="CreditsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Boss Battle #4 [8-bit re-upload]: nene
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="CreditsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Boss Battle #6 [8-bit]: nene
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="CreditsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Stargazer: Centurion_of_war
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="CreditsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Escape from Metal City: congusbongus
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="CreditsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Unstable Field: Centurion_of_war
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="CreditsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MenuButton" type="Button" parent="CreditsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="MenuMusicManager" type="Node" parent="."]
+script = ExtResource("5_dbeaf")

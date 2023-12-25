@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8ol6xpx3oeul"]
+
+[ext_resource type="Script" path="res://Scripts/ScoreCounter.gd" id="1_nej7e"]
+[ext_resource type="Texture2D" uid="uid://b5y3j08glogyv" path="res://UI/flatshadow_medal8.png" id="2_ooweg"]
+
+[node name="ScoreCounter" type="HBoxContainer"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 108.0
+offset_bottom = 60.0
+script = ExtResource("1_nej7e")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_ooweg")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="X_Text" type="Label" parent="."]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+text = "X "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "0"
+vertical_alignment = 1

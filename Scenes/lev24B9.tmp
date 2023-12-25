@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxlr3liidii16"]
+
+[ext_resource type="Texture2D" uid="uid://bwfaskclx4ipd" path="res://Images/black.png" id="1_2eoco"]
+[ext_resource type="Script" path="res://Scripts/AsteroidManager.gd" id="3_8flws"]
+[ext_resource type="Script" path="res://Scripts/BulletManager.gd" id="4_kq6lm"]
+[ext_resource type="Script" path="res://Scripts/AudioManager.gd" id="5_tgenk"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="6_83io3"]
+[ext_resource type="PackedScene" uid="uid://bucnc4glqgnn3" path="res://Scenes/interface.tscn" id="7_bw6kq"]
+
+[node name="Level" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+auto_translate = false
+localize_numeral_system = false
+texture = ExtResource("1_2eoco")
+stretch_mode = 1
+
+[node name="Interface" parent="." instance=ExtResource("7_bw6kq")]
+
+[node name="AsteroidManager" type="Node" parent="."]
+script = ExtResource("3_8flws")
+
+[node name="BulletManager" type="Node" parent="."]
+script = ExtResource("4_kq6lm")
+
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("5_tgenk")
+
+[node name="GameManager" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("6_83io3")
+lives = 3

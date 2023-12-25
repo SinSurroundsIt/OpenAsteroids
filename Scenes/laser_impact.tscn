@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://o123skhfnxoi"]
+
+[ext_resource type="Script" path="res://Scripts/laser_impact.gd" id="1_7385h"]
+
+[sub_resource type="Curve" id="Curve_ro3tv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.815789, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2322i"]
+width = 64
+curve = SubResource("Curve_ro3tv")
+
+[sub_resource type="Gradient" id="Gradient_4g68k"]
+offsets = PackedFloat32Array(0, 0.525, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.905882, 0, 1, 1, 0.411765, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3imuq"]
+gradient = SubResource("Gradient_4g68k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oopnc"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = -180.0
+initial_velocity_max = -180.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_3imuq")
+alpha_curve = SubResource("CurveTexture_2322i")
+hue_variation_min = 0.06
+hue_variation_max = 0.11
+turbulence_enabled = true
+turbulence_noise_scale = 1.0
+
+[sub_resource type="Gradient" id="Gradient_bbf0q"]
+offsets = PackedFloat32Array(0, 0.327586)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bajvt"]
+gradient = SubResource("Gradient_bbf0q")
+width = 6
+height = 6
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="laser_impact" type="Node2D"]
+script = ExtResource("1_7385h")
+
+[node name="impact_effect" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_oopnc")
+texture = SubResource("GradientTexture2D_bajvt")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.28
+
+[connection signal="finished" from="impact_effect" to="." method="_on_impact_effect_finished"]

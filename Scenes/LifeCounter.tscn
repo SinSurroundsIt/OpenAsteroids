@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2cuxqilpxp5t"]
+
+[ext_resource type="Script" path="res://Scripts/LifeCounter.gd" id="1_y3yjl"]
+[ext_resource type="Texture2D" uid="uid://cr3dkuaj8cmls" path="res://Images/playerShip1_red.png" id="1_yngmq"]
+
+[node name="LifeCounter" type="HBoxContainer"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 108.0
+offset_bottom = 60.0
+script = ExtResource("1_y3yjl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_yngmq")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="X_Text" type="Label" parent="."]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+text = "X "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "3"
+vertical_alignment = 1

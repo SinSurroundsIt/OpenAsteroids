@@ -1,0 +1,133 @@
+[gd_scene load_steps=14 format=3 uid="uid://cyt8ljogaw6vm"]
+
+[ext_resource type="Script" path="res://Scripts/ship.gd" id="1_1w35p"]
+[ext_resource type="Texture2D" uid="uid://cr3dkuaj8cmls" path="res://Images/playerShip1_red.png" id="1_bhbcd"]
+[ext_resource type="Texture2D" uid="uid://cl4veadarlnut" path="res://Images/fire15.png" id="2_en3xc"]
+[ext_resource type="Script" path="res://Scripts/thrust_modulate.gd" id="3_4yspa"]
+[ext_resource type="AudioStream" uid="uid://cge4kaijv0p2y" path="res://Sounds/thrusterFire_000.ogg" id="3_vq3sc"]
+[ext_resource type="Script" path="res://Scripts/shield.gd" id="6_2kn06"]
+[ext_resource type="Texture2D" uid="uid://brasuh4wi1fc7" path="res://Images/shield3.png" id="7_wyxk6"]
+[ext_resource type="Texture2D" uid="uid://li0ot17lj1ej" path="res://Images/spark_04.png" id="8_ilo31"]
+
+[sub_resource type="Gradient" id="Gradient_g4msr"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rb5rl"]
+gradient = SubResource("Gradient_g4msr")
+width = 48
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.75, 0.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbsdw"]
+size = Vector2(67.8823, 67.8823)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g81ow"]
+radius = 70.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lp74p"]
+particle_flag_disable_z = true
+angle_min = -180.0
+angle_max = 180.0
+inherit_velocity_ratio = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.25
+scale_max = 0.5
+color = Color(0, 0.894118, 1, 1)
+
+[node name="Ship" type="RigidBody2D"]
+mass = 150.0
+max_contacts_reported = 5
+contact_monitor = true
+linear_damp = 0.1
+angular_damp = 0.3
+script = ExtResource("1_1w35p")
+
+[node name="thrust_sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 45)
+texture = ExtResource("2_en3xc")
+script = ExtResource("3_4yspa")
+
+[node name="PointLight2D" type="PointLight2D" parent="thrust_sprite"]
+position = Vector2(0, 4)
+color = Color(0, 0.643137, 1, 1)
+energy = 2.83
+texture = SubResource("GradientTexture2D_rb5rl")
+
+[node name="turn_sprites" type="Node2D" parent="."]
+
+[node name="right_thrust" type="Sprite2D" parent="turn_sprites"]
+visible = false
+position = Vector2(-11, -29)
+rotation = -1.5708
+scale = Vector2(0.75, 0.5)
+texture = ExtResource("2_en3xc")
+script = ExtResource("3_4yspa")
+
+[node name="left_thrust" type="Sprite2D" parent="turn_sprites"]
+visible = false
+position = Vector2(11, -29)
+rotation = 1.5708
+scale = Vector2(0.75, 0.5)
+texture = ExtResource("2_en3xc")
+script = ExtResource("3_4yspa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bhbcd")
+region_rect = Rect2(245, 122, 1, 0)
+
+[node name="gun_points" type="Node2D" parent="."]
+
+[node name="gun_point_0" type="Node2D" parent="gun_points"]
+position = Vector2(-14, -14)
+
+[node name="gun_point_1" type="Node2D" parent="gun_points"]
+position = Vector2(14, -14)
+
+[node name="thrust_points" type="Node2D" parent="."]
+
+[node name="thrust_point_0" type="Node2D" parent="thrust_points"]
+position = Vector2(0, 38)
+
+[node name="laser_cooldown" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="hull_collider" type="CollisionShape2D" parent="."]
+position = Vector2(2.38419e-07, 3)
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_xbsdw")
+
+[node name="engine_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vq3sc")
+volume_db = -20.0
+pitch_scale = 1.35
+
+[node name="shield" type="Area2D" parent="."]
+script = ExtResource("6_2kn06")
+
+[node name="shield_charge_timer" type="Timer" parent="shield"]
+
+[node name="shield_light" type="PointLight2D" parent="shield"]
+position = Vector2(-2, 2)
+color = Color(0.109804, 1, 1, 1)
+energy = 0.0
+range_layer_min = -1
+texture = ExtResource("7_wyxk6")
+
+[node name="shield_collider" type="CollisionShape2D" parent="shield"]
+shape = SubResource("CircleShape2D_g81ow")
+
+[node name="shield_down_sfx" type="GPUParticles2D" parent="shield"]
+emitting = false
+amount_ratio = 0.1
+process_material = SubResource("ParticleProcessMaterial_lp74p")
+texture = ExtResource("8_ilo31")
+lifetime = 0.5
+one_shot = true
+
+[node name="explode_timer" type="Timer" parent="."]
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="timeout" from="laser_cooldown" to="." method="_on_laser_cooldown_timeout"]
+[connection signal="body_entered" from="shield" to="shield" method="_on_body_entered"]

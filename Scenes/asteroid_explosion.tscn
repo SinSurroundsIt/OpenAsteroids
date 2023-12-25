@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://cc5wuunpp7k4l"]
+
+[ext_resource type="Script" path="res://Scripts/asteroid_explosion.gd" id="1_j83f1"]
+[ext_resource type="Texture2D" uid="uid://xymh4fe5u7qd" path="res://Images/star_05.png" id="1_mwel1"]
+[ext_resource type="Texture2D" uid="uid://ctopw4ese5haa" path="res://Images/flare_01.png" id="3_tkk61"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vxldr"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(24, 24, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+angle_min = -180.0
+angle_max = 180.0
+inherit_velocity_ratio = 100.0
+spread = 180.0
+initial_velocity_min = 300.0
+initial_velocity_max = 500.0
+angular_velocity_min = 50.0
+angular_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.1
+color = Color(1, 0.427451, 0.337255, 1)
+hue_variation_max = 0.14
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5wv41"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 24.0
+emission_ring_inner_radius = 0.0
+angle_min = -180.0
+angle_max = 180.0
+inherit_velocity_ratio = 100.0
+spread = 180.0
+initial_velocity_min = 1200.0
+initial_velocity_max = 1400.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.05
+scale_max = 0.1
+color = Color(0.992157, 0.878431, 0, 1)
+
+[node name="asteroid_explosion" type="Node2D"]
+script = ExtResource("1_j83f1")
+
+[node name="explode" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_vxldr")
+texture = ExtResource("1_mwel1")
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+
+[node name="sparks" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_5wv41")
+texture = ExtResource("3_tkk61")
+lifetime = 0.1
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+
+[connection signal="finished" from="explode" to="." method="_on_gpu_particles_2d_finished"]
